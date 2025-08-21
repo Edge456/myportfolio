@@ -276,3 +276,19 @@ body {
   margin-top: 40px;
   margin-bottom: 60px;
 }
+
+.footer2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  
+}
+.footer2 a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(89, 192, 192);
+  
+}
+
