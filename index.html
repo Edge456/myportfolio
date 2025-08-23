@@ -339,6 +339,39 @@
   });
 </script>
 
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const emailBtn = document.getElementById("emailButton");
+    if (!email-Btn) return;
+
+    emailBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const email = "olayinks97@gmail.com";
+
+      // Desktop fallback
+      const mailtoLink = mailto:${email};
+
+      // Gmail compose
+      const gmailLink = https://mail.google.com/mail/?view=cm&fs=1&to=${email};
+
+      // Outlook compose
+      const outlookLink = https://outlook.live.com/mail/deeplink/compose?to=${email};
+
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.open(gmailLink, "_blank");
+        setTimeout(() => {
+          window.open(outlookLink, "_blank");
+        }, 1200);
+      } else {
+        window.location.href = mailtoLink;
+      }
+    });
+  });
+</script>
+
 
 
 
@@ -349,6 +382,7 @@
 
 </body>
 </html>
+
 
 
 
