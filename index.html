@@ -36,10 +36,12 @@
 
       </a>
       <!-- EMAIL BUTTON -->
-<a id="emailButton" class="email-btn">
+      <a id="emailButton" class="email-btn">
   <i class="fa-solid fa-envelope"></i>
   <span>Email</span>
 </a>
+
+
       
     </div>
   </nav>
@@ -335,34 +337,31 @@
   });
 </script>
 
-
   <script>
   document.getElementById("emailButton").addEventListener("click", function (e) {
     e.preventDefault();
 
-    // Your email
     const email = "olayinks97@gmail.com";
 
-    // Mailto link (desktop)
+    // Desktop (mailto)
     const mailtoLink = mailto:${email}?subject=Hello%20Samson&body=I%20would%20like%20to%20connect%20with%20you.;
 
-    // Gmail & Outlook links
+    // Gmail (forces compose page, not inbox)
     const gmailLink = https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=Hello%20Samson&body=I%20would%20like%20to%20connect%20with%20you.;
+
+    // Outlook as backup
     const outlookLink = https://outlook.live.com/mail/deeplink/compose?to=${email}&subject=Hello%20Samson&body=I%20would%20like%20to%20connect%20with%20you.;
 
-    // Detect mobile
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isMobile) {
-      // Open Gmail first
       window.open(gmailLink, "_blank");
 
-      // Fallback to Outlook after short delay
+      // fallback if Gmail not available
       setTimeout(() => {
         window.open(outlookLink, "_blank");
-      }, 1500);
+      }, 1200);
     } else {
-      // Desktop = open mail client
       window.location.href = mailtoLink;
     }
   });
@@ -370,8 +369,12 @@
 
 
 
+
+
+
 </body>
 </html>
+
 
 
 
