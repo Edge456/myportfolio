@@ -36,7 +36,7 @@
 
       </a>
       <!-- EMAIL BUTTON -->
-      <a id="emailButton" class="email-btn">
+      <a href="#" id="emailButton" class="email-btn">
   <i class="fa-solid fa-envelope"></i>
   <span>Email</span>
 </a>
@@ -338,32 +338,35 @@
 </script>
 
   <script>
-  document.getElementById("emailButton").addEventListener("click", function (e) {
-    e.preventDefault();
+  document.addEventListener("DOMContentLoaded", function () {
+    const emailBtn = document.getElementById("emailButton");
+    if (!emailBtn) return;
 
-    const email = "olayinks97@gmail.com";
+    emailBtn.addEventListener("click", function (e) {
+      e.preventDefault();
 
-    // Desktop (mailto)
-    const mailtoLink = mailto:${email}?subject=Hello%20Samson&body=I%20would%20like%20to%20connect%20with%20you.;
+      const email = "olayinks97@gmail.com";
 
-    // Gmail (forces compose page, not inbox)
-    const gmailLink = https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=Hello%20Samson&body=I%20would%20like%20to%20connect%20with%20you.;
+      // Desktop fallback
+      const mailtoLink = mailto:${email};
 
-    // Outlook as backup
-    const outlookLink = https://outlook.live.com/mail/deeplink/compose?to=${email}&subject=Hello%20Samson&body=I%20would%20like%20to%20connect%20with%20you.;
+      // Gmail compose
+      const gmailLink = https://mail.google.com/mail/?view=cm&fs=1&to=${email};
 
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      // Outlook compose
+      const outlookLink = https://outlook.live.com/mail/deeplink/compose?to=${email};
 
-    if (isMobile) {
-      window.open(gmailLink, "_blank");
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-      // fallback if Gmail not available
-      setTimeout(() => {
-        window.open(outlookLink, "_blank");
-      }, 1200);
-    } else {
-      window.location.href = mailtoLink;
-    }
+      if (isMobile) {
+        window.open(gmailLink, "_blank");
+        setTimeout(() => {
+          window.open(outlookLink, "_blank");
+        }, 1200);
+      } else {
+        window.location.href = mailtoLink;
+      }
+    });
   });
 </script>
 
@@ -372,8 +375,11 @@
 
 
 
+
+
 </body>
 </html>
+
 
 
 
